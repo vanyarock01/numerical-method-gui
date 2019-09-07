@@ -1,0 +1,24 @@
+{
+  "name": "numerical-method-gui",
+  "version": "1.0.0",
+  "description": "numerical method laboratory work",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "dependencies": {
+    "electron-log": "3.0.7",
+    "bootstrap": "4.3.1",
+    "jquery": "3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanyarock01/numerical-method-gui.git"
+  },
+  "author": "Naidenov Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanyarock01/numerical-method-gui/issues"
+  },
+  "homepage": "https://github.com/vanyarock01/numerical-method-gui#readme"
+}
