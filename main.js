@@ -16,6 +16,7 @@ app.once('ready', () => {
         backgroundColor: "#D6D8DC",
         show: false
     })
+    // window.webContents.openDevTools()
     
     window.setMenuBarVisibility(false)
 

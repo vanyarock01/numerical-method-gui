@@ -14,15 +14,26 @@
 </head>
 
 <body>
+    <script src="./vendor/jquery/jquery.js"></script>
+    <script src="./vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Content</div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light">I</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">II</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">III</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">IV</a>
+                <a class="list-group-item list-group-item-action active" id="list-example" data-toggle="list" href="#example" role="tab" aria-controls="example">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Example</h5>
+                    </div>
+                    <p class="mb-1">
+                        Simple template for laboratory work page.
+                    </p>
+                </a>
+                <a class="list-group-item list-group-item-action" id="list-lab-1" data-toggle="list" href="#lab-1" role="tab" aria-controls="lab-1">I</a>
+                <a class="list-group-item list-group-item-action" id="list-lab-2" data-toggle="list" href="#lab-2" role="tab" aria-controls="lab-2">II</a>
+                <a class="list-group-item list-group-item-action" id="list-lab-3" data-toggle="list" href="#lab-3" role="tab" aria-controls="lab-3">III</a>
+                <a class="list-group-item list-group-item-action" id="list-lab-4" data-toggle="list" href="#lab-4" role="tab" aria-controls="lab-4">IV</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -33,18 +44,61 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <div class="container-fluid">
-                <h1 class="mt-4">Content </h1>
+                <h1 class="mt-4">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="example" role="tabpanel" aria-labelledby="example-list">
+                            <script>
+                            $(function() { $("#example").load("content/example/page.html"); });
+                            </script>
+                        </div>
+                        <div class="tab-pane fade" id="lab-1" role="tabpanel" aria-labelledby="lab-1-list">
+                            <script>
+                            $(function() { $("#lab-1").load("content/lab-1/page.html"); });
+                            </script>
+                        </div>
+                        <div class="tab-pane fade" id="lab-2" role="tabpanel" aria-labelledby="lab-2-list">
+                            <script>
+                            $(function() { $("#lab-2").load("content/lab-2/page.html"); });
+                            </script>
+                        </div>
+                        <div class="tab-pane fade" id="lab-3" role="tabpanel" aria-labelledby="lab-3-list">
+                            <script>
+                            $(function() { $("#lab-3").load("content/lab-3/page.html"); });
+                            </script>
+                        </div>
+                        <div class="tab-pane fade" id="lab-4" role="tabpanel" aria-labelledby="lab-4-list">
+                            <script>
+                            $(function() { $("#lab-4").load("content/lab-4/page.html"); });
+                            </script>
+                        </div>
+                    </div>
+                </h1>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
     </div>
-    <!-- /#wrapper -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="./vendor/jquery/jquery.min.js"></script>
-    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
