@@ -1,9 +1,18 @@
 body {
     overflow-x: hidden;
+    font-family: 'Roboto mono', monospace;
 }
 
-h3 {
-  text-align: center;
+blockquote, blockquote p {
+    font-size: 16px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.MathJax {
+    font-size: 2em !important;
 }
 
 #sidebar-wrapper {
