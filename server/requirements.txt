@@ -1,0 +1,3 @@
+zerorpc
+pyzmq
+msgpack-python

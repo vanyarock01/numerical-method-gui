@@ -7,9 +7,11 @@
     "start": "electron main.js"
   },
   "dependencies": {
-    "electron-log": "3.0.7",
     "bootstrap": "4.3.1",
-    "jquery": "3.4.1"
+    "electron-log": "3.0.7",
+    "electron-rebuild": "^1.8.8",
+    "jquery": "3.4.1",
+    "zerorpc": "0.9.8"
   },
   "repository": {
     "type": "git",

@@ -37,4 +37,182 @@
         </div>
     </div>
     <!-- input block -->
+    <div class="card border-secondary">
+        <h4 class="card-header text-secondary">
+            Ввод параметров
+        </h4>
+        <div class="card-body">
+            <form id="input-form-main" class="needs-validation" novalidate>
+                <!-- input: [a, b, c, d] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-a" class="label-medium"><b>a</b>: num</label>
+                        <input type="number" class="form-control" id="param-a" value="0.001" step="0.001" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-a" class="label-medium"><b>b</b>: num</label>
+                        <input type="number" class="form-control" id="param-b" value="0.0" step="1.0" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-a" class="label-medium"><b>c</b>: num</label>
+                        <input type="number" class="form-control" id="param-c" value="0.0" step="1.0" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-a" class="label-medium"><b>l</b>: num</label>
+                        <input type="number" class="form-control" id="param-l" value="1.0" step="1.0" disabled>
+                    </div>
+                </div>
+                <!-- input: [alpha, beta, gamma, delta] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-alpha" class="label-medium"><b>α</b>: num</label>
+                        <input type="number" class="form-control" id="param-alpha" value="0.0" step="1.0" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-beta" class="label-medium"><b>β</b>: num</label>
+                        <input type="number" class="form-control" id="param-beta" value="1.0" step="1.0" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-gamma" class="label-medium"><b>γ</b>: num</label>
+                        <input type="number" class="form-control" id="param-gamma" value="0.0" step="1.0" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-delta" class="label-medium"><b>δ</b>: num</label>
+                        <input type="number" class="form-control" id="param-delta" value="1.0" step="1.0" disabled>
+                    </div>
+                </div>
+                <!-- input: [T, K, N, f] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-T" class="label-medium"><b>T</b>: num</label>
+                        <input type="number" class="form-control" id="param-T" value="50" step="1" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-K" class="label-medium"><b>K</b>: num</label>
+                        <input type="number" class="form-control" id="param-K" value="100" step="10" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-N" class="label-medium"><b>N</b>: num</label>
+                        <input type="number" class="form-control" id="param-N" value="10" step="1" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-f" class="label-medium"><b>func</b>: expr</label>
+                        <input type="text" class="form-control" id="param-f" value="0" disabled>
+                    </div>
+                </div>
+                <!-- input: [bond_cond_type] -->
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="param-bound-cond-type" class="label-medium"><b>bondary condition</b>: select</label>
+                        <select class="custom-select mr-sm-2" type="text" id="param-bound-cond-type" disabled>
+                            <option value="2-1" selected>2-1</option>
+                            <option value="2-2">2-2</option>
+                            <option value="3-2">3-2</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-scheme-type" class="label-medium"><b>scheme type</b>: select</label>
+                        <select class="custom-select mr-sm-2" type="text" id="param-scheme-type">
+                            <option value="EXPLICIT" selected>явный</option>
+                            <option value="IMPLICIT">неявный</option>
+                            <option value="CRANK_NICOLSON">Кранк-Николсон</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- input: [psi, phi0, phiN, exact solution] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-psi" class="label-medium"><b>ψ</b>: expr</label>
+                        <input type="text" class="form-control" id="param-psi" value="sin(2 * PI * x)" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-phi-0" class="label-medium"><b>φ_0</b>: expr</label>
+                        <input type="text" class="form-control" id="param-phi-0" value="0" disabled>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-phi-n" class="label-medium"><b>φ_n</b>: expr</label>
+                        <input type="text" class="form-control" id="param-phi-n" value="0" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="param-exact-solution" class="label-medium"><b>exact solution</b>: expr</label>
+                        <input type="text" class="form-control" id="param-exact-solution" value="exp(-4 * pow(PI, 2) * a * t) * sin(2 * PI * x)" disabled>
+                    </div>
+                </div>
+                <!-- submit: validate params and update plots -->
+                <button id="submit-button-1"class="btn btn-secondary" type="submit">
+                    <span id="submit-spiner-1" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true" style="display: none">
+                    </span>
+                    Solve
+                </button>
+            </form>
+            <script>
+            $('#input-form-main').submit(function(event) {
+                event.preventDefault();
+                $('#submit-spiner-1').show();
+                
+
+                var form_elements = {};
+                var valid = true;
+
+                $("form :input").each(function(form_event) {
+                    if ($(this).hasClass('form-control')) {
+                        this.classList.remove("is-invalid");
+
+                        if (this.checkValidity() === false) {
+                            this.classList.add("is-invalid");
+                            valid = false;
+                            return  false;
+                        }
+
+                        if ($(this).attr('type') === "number") {
+                            form_elements[this.id] = parseFloat($(this).val());
+                        } else {
+                            form_elements[this.id] = $(this).val();
+                        }
+                    }
+                });
+                if (valid === false) {
+                    $("#submit-spiner-1").hide();
+                    return false;
+                }
+
+                $.each($("select option:selected"), function(){
+                    var id = $(this).parent().attr('id');
+                    if ($(this).attr('type') === "number") {
+                        form_elements[id] = parseFloat($(this).val());
+                    } else {
+                        form_elements[id] = $(this).val();
+                    }
+                });
+                var py_server = require('electron').remote.getGlobal('PY_SERVER');
+
+                $("#plot-loader-1").show();
+                $.ajax({
+                    type: "POST",
+                    url: `http://${py_server.host}:${py_server.port}/parabolic/solve`,
+                    data: JSON.stringify(form_elements),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        $('#matplotlib-body-1').html(response.html)
+                        $("#submit-spiner-1").hide();
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        $("#submit-spiner-1").hide();
+                    },
+                });
+                return false;
+            });
+            </script>
+        </div>
+    </div>
+    <!-- plots block -->
+    <div class="card border-dark">
+        <h4 class="card-header text-dark">
+            <p id="plot-title-1">Графики</p>
+            <div id="plot-loader-1" class="loader">
+        </h4>
+        <div class="card-body" id="matplotlib-body-1"></div>
+    </div>
 </body>
