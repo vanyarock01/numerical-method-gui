@@ -1,1 +1,248 @@
-<h3>Laboratory work №3</h3>
+<body>
+    <!-- problem block -->
+    <div class="card border-success">
+        <h4 class="card-header text-success">
+            Лабораторная работа №3
+        </h4>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Решить краевую задачу для дифференциального уравнения эллиптического типа. Аппроксимацию уравнения произвести с использованием центрально-разностной схемы.</p>
+                <p>Для решения дискретного аналога применить следующие методы: метод простых итераций (метод Либмана), метод Зейделя, метод простых итераций с верхней релаксацией.</p>
+                <p>Вычислить погрешность численного решения путем сравнения результатов с приведенным в задании аналитическим решением $U(x, t)$. Исследовать зависимость погрешности от сеточных параметров $h_x$, $h_y$.</p>
+            </blockquote>
+        </div>
+    </div>
+    <!-- task block -->
+    <div class="card border-info">
+        <h4 class="card-header text-info">
+            Вариант задания №1
+        </h4>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>
+                    $
+                    \begin{cases}
+                    \frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}},
+                    \\
+                    u(0, y) = y
+                    \\
+                    u(1, y) = 1 + y
+                    \\
+                    u(x, 0) = x
+                    \\
+                    u(x, 1) = 1 + x
+                    \end{cases}
+                    $
+                </p>
+                <p>Аналитическое решение: $U(x, y) = x + y $</p>
+            </blockquote>
+        </div>
+    </div>
+    <!-- input block -->
+    <div class="card border-secondary">
+        <h4 class="card-header text-secondary">
+            Ввод параметров
+        </h4>
+        <div class="card-body">
+            <form id="input-form-main-3" class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-3-bx" class="label-medium"><b>$b_x$</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-bx" value="0.0" step="0.001">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-by" class="label-medium"><b>$b_y$</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-by" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-c" class="label-medium"><b>c</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-c" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-lx" class="label-medium"><b>$l_x$</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-lx" value="1.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-ly" class="label-medium"><b>$l_y$</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-ly" value="1.0" step="0.1">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-3-omega" class="label-medium"><b>ω</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-omega" value="0.5" step="0.1">
+                    </div>  
+                    <div class="form-group col-md-2">
+                        <label for="param-3-eps" class="label-medium"><b>ε</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-eps" value="0.01" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-maxIterations" class="label-medium"><b>max iterations</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-maxIterations" value="100.0" step="1.0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-3-alpha1" class="label-medium"><b>α1</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-alpha1" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-alpha2" class="label-medium"><b>α2</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-alpha2" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-alpha3" class="label-medium"><b>α3</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-alpha3" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-alpha4" class="label-medium"><b>α4</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-alpha4" value="0.0" step="1.0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-3-beta1" class="label-medium"><b>β1</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-beta1" value="1.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-beta2" class="label-medium"><b>β2</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-beta2" value="1.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-beta3" class="label-medium"><b>β3</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-beta3" value="1.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-beta4" class="label-medium"><b>β4</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-beta4" value="1.0" step="1.0">
+                    </div>
+                </div>
+                <!-- input: [T, K, N, f] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-3-nx" class="label-medium"><b>$n_x$</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-nx" value="10" step="1" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-ny" class="label-medium"><b>$n_y$</b>: num</label>
+                        <input type="number" class="form-control" id="param-3-ny" value="10" step="1" required>
+                    </div>
+                </div>
+                <!-- input: [bond_cond_type] -->
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="param-3-methodType" class="label-medium"><b>method</b>: select</label>
+                        <select class="custom-select mr-sm-2" type="text" id="param-3-methodType">
+                            <option value="LIEBMANN" selected>LIEBMANN</option>
+                            <option value="SEIDEL">SEIDEL</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- input: [psi0, phi1, psi2, phiN, exact solution] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-3-phi1" class="label-medium"><b>$φ_1$</b>: expr</label>
+                        <input type="text" class="form-control" id="param-3-phi1" value="y">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-phi2" class="label-medium"><b>$φ_2$</b>: expr</label>
+                        <input type="text" class="form-control" id="param-3-phi2" value="1 + y">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-phi3" class="label-medium"><b>$φ_3$</b>: expr</label>
+                        <input type="text" class="form-control" id="param-3-phi3" value="x">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-phi4" class="label-medium"><b>$φ_4$</b>: expr</label>
+                        <input type="text" class="form-control" id="param-3-phi4" value="1 + x">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-3-f" class="label-medium"><b>$f$</b>: expr</label>
+                        <input type="text" class="form-control" id="param-3-f" value="0">
+                    </div>
+                </div>
+                <!-- input: [psi_1_derivative_1, psi_1_derivative_2] -->
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="param-3-reference" class="label-medium"><b>reference solution</b>: expr</label>
+                        <input type="text" class="form-control" id="param-3-reference" value="x + y">
+                    </div>
+                </div>
+                <!-- submit: validate param-3s and update plots -->
+                <button id="submit-button-3" class="btn btn-secondary" type="submit">
+                    <span id="submit-spiner-3" class="spinner-border spinner-border-sm mr-3" role="status" aria-hidden="true" style="display: none">
+                    </span>
+                    Solve
+                </button>
+            </form>
+            <script>
+            $('#input-form-main-3').submit(function(event) {
+                event.preventDefault();
+                $('#submit-spiner-3').show();
+
+                var form_elements = {};
+                var valid = true;
+
+                $("form :input").each(function(form_event) {
+                    if ($(this).hasClass('form-control')) {
+                        this.classList.remove("is-invalid");
+
+                        if (this.checkValidity() === false) {
+                            this.classList.add("is-invalid");
+                            valid = false;
+                            return valid;
+                        }
+
+                        if ($(this).attr('type') === "number") {
+                            form_elements[this.id] = parseFloat($(this).val());
+                        } else {
+                            form_elements[this.id] = $(this).val();
+                        }
+                    }
+                });
+
+                if (valid === false) {
+                    $("#submit-spiner-3").hide();
+                    return false;
+                }
+
+                $.each($("select option:selected"), function() {
+                    var id = $(this).parent().attr('id');
+                    if ($(this).attr('type') === "number") {
+                        form_elements[id] = parseFloat($(this).val());
+                    } else {
+                        form_elements[id] = $(this).val();
+                    }
+                });
+
+                var py_server = require('electron').remote.getGlobal('PY_SERVER');
+
+                $("#plot-loader-3").show();
+                $.ajax({
+                    type: "POST",
+                    url: `http://${py_server.host}:${py_server.port}/elliptic/solve`,
+                    data: JSON.stringify(form_elements),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        $('#matplotlib-body-3').html(response.html)
+                        $("#submit-spiner-3").hide();
+                    },
+                    error: function(err) {
+                        $("#submit-spiner-3").hide();
+                    },
+                });
+                return false;
+            });
+            </script>
+        </div>
+    </div>
+    <!-- plots block -->
+    <div class="card border-dark">
+        <h4 class="card-header text-dark">
+            <p id="plot-title-3">Графики</p>
+            <div id="plot-loader-3" class="loader">
+        </h4>
+        <div class="card-body" id="matplotlib-body-3"></div>
+    </div>
+</body>

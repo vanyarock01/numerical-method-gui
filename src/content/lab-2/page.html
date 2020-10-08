@@ -1,1 +1,252 @@
-<h3>Laboratory work №2</h3>
+<body>
+    <!-- problem block -->
+    <div class="card border-success">
+        <h4 class="card-header text-success">
+            Лабораторная работа №1
+        </h4>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Используя явную схему крест и неявную схему, решить начально-краевую задачу для дифференциального уравнения гиперболического типа. Аппроксимацию второго начального условия произвести с первым и со вторым порядком.</p>
+                <p>Осуществить реализацию трех вариантов аппроксимации граничных условий, содержащих производные: двухточечная аппроксимация с первым порядком, трехточечная аппроксимация со вторым порядком, двухточечная аппроксимация со вторым порядком.</p>
+                <p>В различные моменты времени вычислить погрешность численного решения путем сравнения результатов с приведенным в задании аналитическим решением $U(x, t)$. Исследовать зависимость погрешности от сеточных параметров $\tau$, $h$.</p>
+            </blockquote>
+        </div>
+    </div>
+    <!-- task block -->
+    <div class="card border-info">
+        <h4 class="card-header text-info">
+            Вариант задания №2
+        </h4>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>
+                    $
+                    \begin{cases}
+                    \frac{\partial^{2} u}{\partial t^{2}}=a^{2}\frac{\partial^{2}u}{\partial x^{2}}, a^{2}>0
+                    \\
+                    u(0, t) = -sin(at)
+                    \\
+                    u(\pi, t) = sin(at)
+                    \\
+                    u(x, 0) = sinx
+                    \\
+                    u_{t}(x, 0) = -a cosx
+                    \end{cases}
+                    $
+                </p>
+                <p>Аналитическое решение: $U(x,t) = sin(x - at)$</p>
+            </blockquote>
+        </div>
+    </div>
+    <!-- input block -->
+    <div class="card border-secondary">
+        <h4 class="card-header text-secondary">
+            Ввод параметров
+        </h4>
+        <div class="card-body">
+            <form id="input-form-main-2" class="needs-validation" novalidate>
+                <!-- input: [a, b, c, e, l] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-2-a" class="label-medium"><b>a</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-a" value="1.0" step="0.001">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-b" class="label-medium"><b>b</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-b" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-c" class="label-medium"><b>c</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-c" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-e" class="label-medium"><b>e</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-e" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-l" class="label-medium"><b>l</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-l" value="3.14" step="0.1">
+                    </div>
+                </div>
+                <!-- input: [alpha, beta, gamma, delta] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-2-alpha" class="label-medium"><b>α</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-alpha" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-beta" class="label-medium"><b>β</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-beta" value="1.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-gamma" class="label-medium"><b>γ</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-gamma" value="0.0" step="1.0">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-delta" class="label-medium"><b>δ</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-delta" value="1.0" step="1.0">
+                    </div>
+                </div>
+                <!-- input: [T, K, N, f] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-2-T" class="label-medium"><b>T</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-T" value="1" step="1" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-K" class="label-medium"><b>K</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-K" value="100" step="10" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-N" class="label-medium"><b>N</b>: num</label>
+                        <input type="number" class="form-control" id="param-2-N" value="10" step="1" required>
+                    </div>
+                    <!--
+                    <div class="form-group col-md-2">
+                        <label for="param-2-f" class="label-medium"><b>func</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-f" value="0">
+                    </div>
+                    -->
+                </div>
+                <!-- input: [bond_cond_type] -->
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="param-2-boundCondType" class="label-medium"><b>bondary condition</b>: select</label>
+                        <select class="custom-select mr-sm-2" type="text" id="param-2-boundCondType">
+                            <option value="2_1" selected>2-1</option>
+                            <option value="2_2">2-2</option>
+                            <option value="3_2">3-2</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-schemeType" class="label-medium"><b>scheme type</b>: select</label>
+                        <select class="custom-select mr-sm-2" type="text" id="param-2-schemeType">
+                            <option value="EXPLICIT">неявный</option>
+                            <option value="IMPLICIT" selected>явный</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-initCondType" class="label-medium"><b>init condition type</b>: select</label>
+                        <select class="custom-select mr-sm-2" type="number" id="param-2-initCondType">
+                            <option value=1 selected>1</option>
+                            <option value=2>2</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- input: [psi0, phi1, psi2, phiN, exact solution] -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="param-2-phi0" class="label-medium"><b>φ_0</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-phi0" value="-sin(t)">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-phiN" class="label-medium"><b>φ_n</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-phiN" value="sin(t)">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-psi1" class="label-medium"><b>ψ_1</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-psi1" value="sin(x)">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="param-2-psi2" class="label-medium"><b>ψ_2</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-psi2" value="-cos(x)">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="param-2-reference" class="label-medium"><b>exact solution</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-reference" value="sin(x - t)">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="param-2-f" class="label-medium"><b>f</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-f" value="0">
+                    </div>
+                </div>
+                <!-- input: [psi_1_derivative_1, psi_1_derivative_2] -->
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="param-2-psi1Derivative1" class="label-medium"><b>ψ_1 derivative 1</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-psi1Derivative1" value="cos(x)">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="param-2-psi1Derivative2" class="label-medium"><b>ψ_1 derivative 2</b>: expr</label>
+                        <input type="text" class="form-control" id="param-2-psi1Derivative2" value="-sin(x)">
+                    </div>
+                </div>
+                <!-- submit: validate param-2s and update plots -->
+                <button id="submit-button-2" class="btn btn-secondary" type="submit">
+                    <span id="submit-spiner-2" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true" style="display: none">
+                    </span>
+                    Solve
+                </button>
+            </form>
+            <script>
+            $('#input-form-main-2').submit(function(event) {
+                event.preventDefault();
+                $('#submit-spiner-2').show();
+
+
+                var form_elements = {};
+                var valid = true;
+
+                $("form :input").each(function(form_event) {
+                    if ($(this).hasClass('form-control')) {
+                        this.classList.remove("is-invalid");
+
+                        if (this.checkValidity() === false) {
+                            this.classList.add("is-invalid");
+                            valid = false;
+                            return false;
+                        }
+
+                        if ($(this).attr('type') === "number") {
+                            form_elements[this.id] = parseFloat($(this).val());
+                        } else {
+                            form_elements[this.id] = $(this).val();
+                        }
+                    }
+                });
+
+                if (valid === false) {
+                    $("#submit-spiner-2").hide();
+                    return false;
+                }
+
+                $.each($("select option:selected"), function() {
+                    var id = $(this).parent().attr('id');
+                    if ($(this).attr('type') === "number") {
+                        form_elements[id] = parseFloat($(this).val());
+                    } else {
+                        form_elements[id] = $(this).val();
+                    }
+                });
+
+                var py_server = require('electron').remote.getGlobal('PY_SERVER');
+
+                $("#plot-loader-2").show();
+                $.ajax({
+                    type: "POST",
+                    url: `http://${py_server.host}:${py_server.port}/hyperbolic/solve`,
+                    data: JSON.stringify(form_elements),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) {
+                        $('#matplotlib-body-2').html(response.html)
+                        $("#submit-spiner-2").hide();
+                    },
+                    error: function(err) {
+                        $("#submit-spiner-2").hide();
+                    },
+                });
+                return false;
+            });
+            </script>
+        </div>
+    </div>
+    <!-- plots block -->
+    <div class="card border-dark">
+        <h4 class="card-header text-dark">
+            <p id="plot-title-2">Графики</p>
+            <div id="plot-loader-2" class="loader">
+        </h4>
+        <div class="card-body" id="matplotlib-body-2"></div>
+    </div>
+</body>
